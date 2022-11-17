@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fit the image</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+        }
+
+        /* Write your code below */
+        .image {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>fit the image</h1>
+    <p>Suppose we have following image of ratio 1:4</p>
+    <img src="./image.jpg" alt="image">
+    <p>Now in an HTML structure like below, please fit the image to the container div, just as if it is used as container's background-image with background-size:cover.</p>
+
+    <div class="work-area">
+        <img src="./image.jpg" alt="image" class="image">
+    </div>
+</body>
+</html>
