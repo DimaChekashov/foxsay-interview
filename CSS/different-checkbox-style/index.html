@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>different checkbox style</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+        }
+
+        /* Write your code below */
+        .my-checkbox input {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: calc(50% -7.5px);
+        }
+
+        .my-checkbox input:checked + span::before {
+            background-color: green;
+        }
+
+        .my-checkbox span {
+            position: relative;
+        }
+
+        .my-checkbox span::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>different checkbox style</h1>
+    <p>The default checkbox style might not be what you want for most of the time, in this problem you are asked to create a different checkbox style.</p>
+    <ol>
+        <li>when unchecked, show a gray circle ('color: gray')</li>
+        <li>when checked, show a green circle ('color: green')</li>
+    </ol>
+    <p>Set the circle with radius of 5px and don't add extra padding.</p>
+
+    <div class="work-area">
+        <label class="my-checkbox">
+            <input type="checkbox" />
+            <span>a checkbox</span>
+        </label>
+    </div>
+</body>
+</html>
