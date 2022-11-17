@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list numbering</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+        }
+
+        /* Write your code below */
+        ol { 
+            counter-reset: item; 
+            margin-left: -13px;
+        }
+
+        li { 
+            display: block;
+        }
+
+        li:before { 
+            content: counters(item, ".") " "; 
+            counter-increment: item;
+            color: #f44336 
+        }
+    </style>
+</head>
+<body>
+    <h1>list numbering</h1>
+
+    <div class="work-area">
+        <ol>
+            <li>BFE.dev</li>
+            <li>
+                JavaScript
+                <ol>
+                    <li>TypeScript</li>
+                    <li>Quiz</li>
+                    <li>
+                        Framework
+                        <ol>
+                            <li>React</li>
+                            <li>Vue.js</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+            <li>CSS</li>
+            <li>System Design</li>
+        </ol>
+    </div>
+</body>
+</html>
