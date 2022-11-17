@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>truncate text in one line(with ellipsis)</title>
+    <style>
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+        }
+
+        /* Write your code below */
+        .one-line {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>truncate text in one line(with ellipsis)</h1>
+    <p>Truncate text in one line, if needed add ellipsis.</p>
+
+    <div class="work-area">
+        <p class="one-line">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium officiis molestiae itaque fuga ipsum pariatur explicabo laudantium labore cupiditate laborum suscipit et minima, sed quas, eum iure reiciendis expedita culpa!</p>
+    </div>
+</body>
+</html>
