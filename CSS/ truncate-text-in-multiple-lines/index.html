@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>truncate text in multiple lines(with ellipsis)</title>
+    <style>
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+        }
+
+        /* Write your code below */
+        .max-three-lines {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+                    line-clamp: 3; 
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+<body>
+    <h1>truncate text in multiple lines(with ellipsis)</h1>
+    <p>Just like <strong>truncate-text-in-one-line(with ellipsis)</strong>, please do the same for max 3 lines.</p>
+
+    <div class="work-area">
+        <p class="max-three-lines">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam voluptatum quae illum consectetur quis sed inventore deserunt doloremque libero. Minima et maiores rerum, quasi saepe molestias animi molestiae similique sequi!
+        Quis ex, nihil nostrum itaque perferendis aperiam animi id voluptates, vero, doloribus ipsa et facere labore dignissimos ea? Maxime excepturi voluptate velit ipsa harum neque saepe optio animi modi numquam.</p>
+    </div>
+</body>
+</html>
