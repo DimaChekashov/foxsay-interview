@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color gradients on text</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+        }
+
+        /* Write your code below */
+        .gradient-text {
+            font-size: 30px;
+            font-weight: bold;
+            background-image: linear-gradient(90deg, red, yellow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <h1>color gradients on text</h1>
+    <p>Let's give text some color gradients, from red on the left to yellow on the right.</p>
+
+    <div class="work-area">
+        <span class="gradient-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae beatae, magnam, repellat dolore corrupti tenetur necessitatibus tempore quis repellendus in tempora, rerum sed inventore officiis facere deserunt cum ut accusantium!</span>
+    </div>
+</body>
+</html>
