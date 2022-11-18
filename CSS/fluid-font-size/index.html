@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fluid font size</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+        }
+
+        /* Write your code below */
+        .title {
+            text-align: center;
+            font-size: clamp(16px, calc(0.08 * 100vw), 32px);
+        }
+    </style>
+</head>
+<body>
+    <h1>fluid font size</h1>
+    <p>Create a heading of fluid font size.</p>
+    <ul>
+        <li>if viewport width is smaller than 200px, use 16px</li>
+        <li>if viewport width is bigger than 400px, use 32px</li>
+        <li>otherwise font-size is linearly scaled. For example if viewport is 300px = (200px + 400px) / 2, then font-size is 24px = (16px + 32px) / 2</li>
+    </ul>
+
+    <div class="work-area">
+        <h2 class="title">Lorem ipsum dolor sit, amet consectetur adipisicing elit</h2>
+    </div>
+</body>
+</html>
