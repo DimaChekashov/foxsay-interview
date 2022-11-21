@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0.5px border</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+
+        /* Write your code below */
+        .hairline {
+            width: 150px;
+            border-top: 1px solid black;
+            transform: scaleY(0.5);
+            transform-origin: 0 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>0.5px border</h1>
+    <p>When we set 0.5px in CSS, usually it will be rounded by browsers. But with better and better display like Retina display, 1px would sometimes looks thick.</p>
+
+    <div class="work-area">
+        <div class="hairline"></div>
+    </div>
+</body>
+</html>
