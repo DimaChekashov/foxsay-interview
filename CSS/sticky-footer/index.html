@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sticky footer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+        }
+
+        /* Write your code below */
+        .header {
+            background-color: #555;
+            color: #fff;
+            padding: 20px 10px;
+        }
+        
+        .body {
+            padding: 20px 10px;
+        }
+
+        .footer {
+            background-color: #555;
+            color: #fff;
+            padding: 20px 10px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>sticky footer</h1>
+    <p>"Sticky footer" is a layout pattern that</p>
+    <ol>
+        <li>if content is short, the footer "sticks" to the bottom</li>
+        <li>otherwise, footer is is displayed after the content as normal.</li>
+    </ol>
+
+    <div class="work-area">
+        <div class="container">
+            <div class="header">header</div>
+            <div class="body">
+                content here might be tall , might be short
+            </div>
+            <div class="footer">footer</div>
+        </div>
+    </div>
+</body>
+</html>
