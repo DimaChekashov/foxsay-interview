@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex layout 1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+        }
+
+        /* Write your code below */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .item {
+            background-color: #7aa4f0;
+            height: 50px;
+            margin: 5px;
+            flex: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>flex layout 1</h1>
+    <p>Suppose we have to layout a bunch of items with below requirements.</p>
+    <ol>
+        <li>fill out to width:100px, but stretch to fill the available space and shrink if not enough</li>
+        <li>stack them if needed</li>
+    </ol>
+
+    <div class="work-area">
+        <div class="container">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </div>
+</body>
+</html>
