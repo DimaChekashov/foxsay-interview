@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Grail Layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+        }
+
+        /* Write your code below */
+        .container {
+            display: grid;
+            grid-template-columns: 100px 1fr 100px;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas: 
+                "header header header"
+                "left-sidebar body right-sidebar"
+                "footer footer footer";
+            height: 100%;
+        }
+
+        .header {
+            grid-area: header;
+            background-color: rgb(0, 145, 255);
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .left-sidebar {
+            grid-area: left-sidebar;
+            background-color: rgb(0, 255, 30);
+            color: #000;
+            padding: 10px;
+        }
+
+        .body {
+            grid-area: body;
+            padding: 10px;
+        }
+
+        .right-sidebar {
+            grid-area: right-sidebar;
+            background-color: rgb(0, 255, 30);
+            color: #000;
+            padding: 10px;
+        }
+
+        .footer {
+            grid-area: footer;
+            background-color: rgb(0, 145, 255);
+            color: #fff;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Holy Grail Layout</h1>
+    <p>Implement Holy Grail Layout which includes header, left sidebar, body, right sidebar and footer.</p>
+    <ol>
+        <li>it should be sticky footer</li>
+        <li>left sidebar and right sidebar should be fixed width of 100px.</li>
+        <li>styles of color .etc are already set for you, only layout related CSS code is needed.</li>
+    </ol>
+
+    <div class="work-area">
+        <div class="container">
+            <header class="header">header</header>
+            <div class="left-sidebar">left sidebar</div>
+            <div class="body">body</div>
+            <div class="right-sidebar">right sidebar</div>
+            <footer class="footer">footer</footer>
+        </div>
+    </div>
+</body>
+</html>
