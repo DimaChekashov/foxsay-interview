@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>multi-column text</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+
+        /* Write your code below */
+        .three-column-text {
+            margin: 10px;
+            column-count: 3;
+            column-gap: 20px;
+            column-rule: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>multi-column text</h1>
+    <p>It is very common to see text in multiple columns on newspaper, please achieve something similar in this problem.</p>
+    <p>Complete the CSS code according to following requirements</p>
+    <ol>
+        <li>divide into 3 columns</li>
+        <li>use 1px line of #ddd as separator</li>
+        <li>adding 10px space around each column, to container border and to the separator</li>
+    </ol>
+
+    <div class="work-area">
+        <div class="three-column-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fugiat vel unde exercitationem aperiam! Iste nam earum molestiae dolores aspernatur rerum, nostrum dicta quos incidunt soluta hic totam consequatur quaerat.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fugiat vel unde exercitationem aperiam! Iste nam earum
+            molestiae dolores aspernatur rerum, nostrum dicta quos incidunt soluta hic totam consequatur quaerat.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fugiat vel unde exercitationem aperiam! Iste nam earum
+            molestiae dolores aspernatur rerum, nostrum dicta quos incidunt soluta hic totam consequatur quaerat.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fugiat vel unde exercitationem aperiam! Iste nam earum
+            molestiae dolores aspernatur rerum, nostrum dicta quos incidunt soluta hic totam consequatur quaerat.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fugiat vel unde exercitationem aperiam! Iste nam earum
+            molestiae dolores aspernatur rerum, nostrum dicta quos incidunt soluta hic totam consequatur quaerat.
+        </div>
+    </div>
+</body>
+</html>
