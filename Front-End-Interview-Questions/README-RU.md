@@ -1,6 +1,5 @@
 # Front-End Interview Questions
-
-## 1. What are the time and space complexity for sorting algorithms
+## 1. Какая оценка сложности у алгортмов сортировки
 
 ### Сортировка пузырьком
 
@@ -18,7 +17,7 @@
 основаны многие другие методы, например, шейкерная 
 сортировка и сортировка расчёской.
 
-<img src="./images/bubble-sort-complexity.png" />
+<img src="./images/bubble-sort-complexity.png" style="background: #fff;" />
 
 ### Сортировка перемешиванием
 
@@ -28,7 +27,7 @@
 что она двунаправленная: алгоритм перемещается не строго слева направо, 
 а сначала слева направо, затем справа налево.
 
-<img src="./images/cocktail-shaker-sort-complexity.png" />
+<img src="./images/cocktail-shaker-sort-complexity.png" style="background: #fff;" />
 
 ### Сортировка расчёской
 
@@ -47,7 +46,7 @@
 на каждом последующем шаге расстояние будет снова делиться на фактор уменьшения — 
 и так до окончания работы алгоритма.
 
-<img src="./images/comb-sort-complexity.png" />
+<img src="./images/comb-sort-complexity.png" style="background: #fff;" />
 
 ### Сортировка вставками
 
@@ -57,7 +56,7 @@
 направо. При этом каждый последующий элемент размещается так, чтобы он оказался между 
 ближайшими элементами с минимальным и максимальным значением.
 
-<img src="./images/insertion-sort-complexity.png" />
+<img src="./images/insertion-sort-complexity.png" style="background: #fff;" />
 
 ### Сортировка выбором
 
@@ -68,7 +67,7 @@
 элемента. Этот шаг нужно повторять до тех пор, пока в массиве не закончатся неотсортированные 
 подмассивы.
 
-<img src="./images/selection-sort-complexity.png" />
+<img src="./images/selection-sort-complexity.png" style="background: #fff;" />
 
 ### Быстрая сортировка
 
@@ -83,7 +82,7 @@
 магнитных лентах, а сортировка слов обрабатываемого текста позволяла получить переводы за один 
 прогон ленты, без перемотки назад.
 
-<img src="./images/quick-sort-complexity.png" />
+<img src="./images/quick-sort-complexity.png" style="background: #fff;" />
 
 ### Сортировка слиянием
 
@@ -94,7 +93,7 @@
 разбивается на две примерно равные части и каждая из них сортируется по отдельности. 
 Затем два отсортированных подмассива сливаются в один.
 
-<img src="./images/merge-sort-complexity.png" />
+<img src="./images/merge-sort-complexity.png" style="background: #fff;" />
 
 ### Пирамидальная сортировка
 
@@ -111,4 +110,4 @@
 элемент, а затем помещаем его в конец. Дальше нужно рекурсивно повторять ту же операцию 
 для оставшихся элементов.
 
-<img src="./images/heapsort-complexity.png" />
+<img src="./images/heapsort-complexity.png" style="background: #fff;" />
