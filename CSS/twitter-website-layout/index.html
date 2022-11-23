@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter's website layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .work-area {
+            width: 600px;
+            height: 600px;
+            max-width: 100%;
+            border: 1px solid #000;
+        }
+
+        /* Write your code below */
+        .container {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .left {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            background-color: #eee;
+        }
+
+        .middle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ddd;
+            width: 100%;
+            max-width: 240px;
+        }
+        .right {
+            background-color: #eee;
+            display: none;
+        }
+
+
+        @media screen and (max-width: 420px) {
+            .right {
+                display: none;
+            }
+        }
+
+
+        @media screen and (min-width: 420px) {
+            .right {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 120px;
+            }
+
+            .container {
+                margin-right: 10px;
+                margin-left: 10px;
+            }
+
+            .left {
+                flex-grow: 1;
+                max-width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Twitter's website layout</h1>
+    <p>Open Twitter's website and change the window size, you'll notice that layout changes responsively.</p>
+    <p>Now please complete the CSS to satisfy following requirement</p>
+    <ol>
+        <li>when viewport width is not enough, set left column to 40px wide and middle column to stretching.</li>
+        <li>middle column has maximum width of 240px</li>
+        <li>when there is enough space, show right column which has width of 120px</li>
+        <li>if there is more space, set left column to 80px</li>
+        <li>when right column is visible, set minimum 10px space horizontally to the viewport border</li>
+    </ol>
+
+    <div class="work-area">
+        <div class="container">
+            <div class="left">left</div>
+            <div class="middle">middle</div>
+            <div class="right">right</div>
+        </div>
+    </div>
+</body>
+</html>
