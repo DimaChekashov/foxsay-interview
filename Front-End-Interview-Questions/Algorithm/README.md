@@ -1,4 +1,4 @@
-# Front-End Interview Questions
+# Algorithm Questions
 
 ## 1. What are the time and space complexity for sorting algorithms
 
