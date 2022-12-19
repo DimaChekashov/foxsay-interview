@@ -4,3 +4,5 @@
 
 
 ## 2 Explain `this` in JavaScript
+
+## 3 Wht is Closure and how it works?
