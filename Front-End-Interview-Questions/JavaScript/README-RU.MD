@@ -644,3 +644,124 @@ arr – массив, который перебирается.
     // получили массив с длинами
     console.log( nameLengths ); // 4,3,10
 ```
+
+## 10 Как работает `instanceOf` и чем отличается от `typeof`?
+
+typeof - Оператор каторый возвращает строку, указывающую тип операнда.
+
+У него есть два синтаксиса: со скобками и без:
+1. Синтаксис оператора: typeof x
+2. Синтаксис функции: typeof(x)
+
+Работают они одинаково, но первый синтаксис короче.
+
+Результатом typeof является строка, содержащая тип:
+```JavaScript
+    typeof undefined // "undefined"
+
+    typeof 0 // "number"
+
+    typeof 1n // "bigint"
+
+    typeof true // "boolean"
+
+    typeof "foo" // "string"
+
+    typeof Symbol() // "symbol"
+
+    typeof {} // "object"
+
+    typeof null // "object"
+
+    typeof function(){} // "function"
+```
+
+instanceof - Оператор каторый проверяет, принадлежит ли объект к определённому классу. Другими словами, object instanceof constructor проверяет, присутствует ли объект constructor.prototype в цепочке прототипов object.
+
+Оператор вернёт true, если obj принадлежит классу Class или наследующему от него.
+```JavaScript
+    class Rabbit {}
+    let rabbit = new Rabbit();
+
+    // это объект класса Rabbit?
+    console.log( rabbit instanceof Rabbit ); // true
+```
+
+Также это работает с функциями-конструкторами:
+```JavaScript
+    // вместо класса
+    function Rabbit() {}
+
+    console.log( new Rabbit() instanceof Rabbit ); // true
+```
+
+И для встроенных классов, таких как Array:
+```JavaScript
+    let arr = [1, 2, 3];
+    alert( arr instanceof Array ); // true
+    alert( arr instanceof Object ); // true
+```
+
+Обычно оператор instanceof просматривает для проверки цепочку прототипов. Но это поведение может быть изменено при помощи статического метода Symbol.hasInstance.
+
+Алгоритм работы obj instanceof Class работает примерно так:
+1. Если имеется статический метод Symbol.hasInstance, тогда вызвать его: Class[Symbol.hasInstance](obj). Он должен вернуть либо true, либо false, и это конец. Это как раз и есть возможность ручной настройки instanceof.
+```JavaScript
+    // проверка instanceof будет полагать,
+    // что всё со свойством canEat - животное Animal
+    class Animal {
+        static [Symbol.hasInstance](obj) {
+            if (obj.canEat) return true;
+        }
+    }
+
+    let obj = { canEat: true };
+    console.log(obj instanceof Animal); // true: вызван Animal[Symbol.hasInstance](obj)
+```
+2. Большая часть классов не имеет метода Symbol.hasInstance. В этом случае используется стандартная логика: проверяется, равен ли Class.prototype одному из прототипов в прототипной цепочке obj.
+```JavaScript
+    obj.__proto__ === Class.prototype?
+    obj.__proto__.__proto__ === Class.prototype?
+    obj.__proto__.__proto__.__proto__ === Class.prototype?
+    // если какой-то из ответов true - возвратить true
+    // если дошли до конца цепочки - false
+```
+
+Ещё, есть метод objA.isPrototypeOf(objB), который возвращает true, если объект objA есть где-то в прототипной цепочке объекта objB. Так что obj instanceof Class можно перефразировать как Class.prototype.isPrototypeOf(obj).
+
+Object.prototype.toString - возвращает тип
+
+Уже известно, что обычные объекты преобразуются к строке как [object Object]:
+```JavaScript
+    let obj = {};
+
+    console.log(obj); // [object Object]
+    console.log(obj.toString()); // то же самое
+```
+
+Так работает реализация метода toString. Но у toString имеются скрытые возможности, которые делают метод гораздо более мощным. Мы можем использовать его как расширенную версию typeof и как альтернативу instanceof.
+
+Согласно спецификации встроенный метод toString может быть позаимствован у объекта и вызван в контексте любого другого значения. И результат зависит от типа этого значения.
+* Для числа это будет [object Number]
+* Для булева типа это будет [object Boolean]
+* Для null: [object Null]
+* Для undefined: [object Undefined]
+* Для массивов: [object Array]
+
+Например:
+```JavaScript
+    let s = Object.prototype.toString;
+
+    console.log( s.call(123) ); // [object Number]
+    console.log( s.call(null) ); // [object Null]
+    console.log( s.call(alert) ); // [object Function]
+```
+
+#### Итого
+1. typeof работает для примитивов, и возвращает строку
+2. {}.toString работает для примитивов, встроенных объектов, объектов с Symbol.toStringTag, и возвращает строку
+3. instanceof работает для объектов, и возвращает true/false
+
+Можно увидеть, технически {}.toString «более продвинут», чем typeof.
+
+А оператор instanceof – отличный выбор, когда мы работаем с иерархией классов и хотим делать проверки с учётом наследования.
