@@ -13,4 +13,13 @@
 ## 6 Map vs Object vs Set vs Array
 
 ## 7 difference between `==` and `===`
+
+## 8 Explain the differences between AMD, CommonJS and ES modules
+
+## 9 `Array.prototype.forEach()` vs `Array.prototype.map()`
+
+## 10 How does `instanceOf` work? difference with `typeof`
+
+## 11 Explain `new` operator in JavaScript. What exactly does it do?
+
  
