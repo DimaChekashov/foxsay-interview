@@ -67,7 +67,7 @@
 
 Если инлайн-элемент граничит с блоком, то между ними обязательно будет перенос строки.
 
-## 3 Explain Box Model
+## 3 Объясните что такое Box Model
 
 ## 4 What are Pseudo Class and Pseudo Element?
 
