@@ -202,3 +202,27 @@ const x = 5;
 
 const myElement = <h1>{(x) < 10 ? "Hello" : "Goodbye"}</h1>;
 ```
+
+## Компоненты
+
+Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML.
+
+Components come in two types, Class components and Function components, in this tutorial we will concentrate on Function components.
+
+### Классовые
+
+A class component must include the `extends React.Component` statement. This statement creates an inheritance to React.Component, and gives your component access to React.Component's functions.
+
+The component also requires a `render()` method, this method returns HTML.
+
+```jsx
+class Car extends React.Component {
+  render() {
+    return <h2>Hi, I am a Car!</h2>;
+  }
+}
+```
+
+### Функциональные
+
+A Function component also returns HTML, and behaves much the same way as a Class component, but Function components can be written using much less code, are easier to understand, and will be preferred in this tutorial.
