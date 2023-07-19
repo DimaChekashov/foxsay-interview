@@ -32,6 +32,7 @@ alert(message);
 ```
 При изменении значения старые данные удаляются из переменной:
 ![alt text](https://learn.javascript.ru/article/variables/variable-change.svg)  
+
 Также можно объявить две переменные и скопировать данные из одной в другую.
 ```JavaScript
 let hello = 'Hello world!';
