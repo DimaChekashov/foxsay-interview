@@ -18,7 +18,7 @@ var message = 'Hello';
 ### Аналогия из жизни
 Мы легко поймём концепцию «переменной», если представим её в виде «коробки» для данных с уникальным названием на ней.
 Например, переменную message можно представить как коробку с названием "message" и значением "Hello!" внутри:
-![alt text](https://learn.javascript.ru/article/variables/variable.svg)
+![alt text](https://learn.javascript.ru/article/variables/variable.svg)  
 Можно положить любое значение в коробку.
 Также можно изменить его столько раз, сколько захотим:
 ```javascript
@@ -31,7 +31,7 @@ message = 'World!'; // значение изменено
 alert(message);
 ```
 При изменении значения старые данные удаляются из переменной:
-![alt text](https://learn.javascript.ru/article/variables/variable-change.svg)
+![alt text](https://learn.javascript.ru/article/variables/variable-change.svg)  
 Также можно объявить две переменные и скопировать данные из одной в другую.
 ```JavaScript
 let hello = 'Hello world!';
