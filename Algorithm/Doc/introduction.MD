@@ -24,7 +24,7 @@
         let high = list.length - 1;
 
         while(low <= high) {
-            mid = (low + high);
+            mid = Math.floor((low + high) / 2);
             guess = list[mid];
 
             if(guess === item) {
