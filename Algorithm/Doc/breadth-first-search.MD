@@ -113,3 +113,165 @@ graph.set("claire", ["thom", "jonny"]);
 * Направленный граф: РОСС <--> РЭЙЧЕЛ
 * Ненаправленный граф: РОСС --- РЭЙЧЕЛ
 
+### Реализация алгоритма
+Напомню, как работает реализация:
+1. Создается очередь с именами проверяемых людей
+2. Извлечение из очереди очередного человека
+3. Проверить, являет­ся ли этот человек продавцом манго
+4. Если да "завершить" иначе "добавить всех соседей этого человека в очередь"
+5. Возврат на второе действие
+6. Если очередь пуста, в вашей сети нет продавцов манго
+
+Все начинается с создания очереди. В Python для создания двусторонней очереди (дека) используется функция deque:
+```JavaScript
+class Deque {
+    constructor() {
+        this.front = this.back = undefined;
+    }
+    addFront(value) {
+        if (!this.front) this.front = this.back = { value };
+        else this.front = this.front.next = { value, prev: this.front };
+    }
+    removeFront() {
+        let value = this.peekFront();
+        if (this.front === this.back) this.front = this.back = undefined;
+        else (this.front = this.front.prev).next = undefined;
+        return value;
+    }
+    peekFront() { 
+        return this.front && this.front.value;
+    }
+    addBack(value) {
+        if (!this.front) this.front = this.back = { value };
+        else this.back = this.back.prev = { value, next: this.back };
+    }
+    removeBack() {
+        let value = this.peekBack();
+        if (this.front === this.back) this.front = this.back = undefined;
+        else (this.back = this.back.next).back = undefined;
+        return value;
+    }
+    peekBack() { 
+        return this.back && this.back.value;
+    }
+}
+
+let search_queue = new Deque();
+search_queue.addFront(graph.get("you"));
+```
+Напомню, что выражение graph ["you"] вернет список всех ваших соседей, например ["alice", "ЬоЬ", "claire"]. Все они добавляются в очередь по­иска.
+
+А теперь рассмотрим остальное:
+```JavaScript
+while (search_queue) {
+    let person = search_queue.removeFront();
+
+    if(person_is_seller(person)) {
+        console.log(person + " is a mango seller!");
+        return true;
+    } else {
+        search_queue.addFront(graph.person);
+    }
+
+    return false;
+}
+```
+И последнее: нужно определить функцию person_is_seller, которая со­общает, является ли человек продавцом манго. Например, функция может выглядеть так:
+```JavaScript
+function person_is_seller(name) {
+    return name[1] === "h";
+}
+Проверка довольно глупая, но для нашего примера сойдет.
+
+Алгоритм продолжает работать до тех пор, пока:
+* не будет найден продавец манго,
+или
+* очередь не опустеет (в этом случае продавца манго нет).
+```
+У Алисы и Боба есть один общий друг: Пегги. Следовательно, Пегги будет добавлена в очередь дважды: при добавлении друзей Алисы и при добав­лении друзей Боба. В результате Пегги появится в очереди поиска в двух экземплярах.
+
+Но проверить, является ли Пегги продавцом манго, достаточно всего один раз. Проверяя ее дважды, вы выполняете лишнюю, ненужную работу. Сле­довательно, после проверки человека нужно пометить как проверенного, чтобы не проверять его снова.
+В начале Очередь поиска содержит всех ваших соседей.
+Теперь вы проверяете Пегги. Она не является продавцом манго, поэтому все ее соседи добавляются в очередь поиска.
+Вы проверяете себя. Вы не являетесь продавцом манго, поэтому все ваши соседи добавляются в очередь поиска.
+И так далее. Возникает бесконечный цикл, потому что очередь поиска будет поочередно переходить от вас к Пегги.
+Прежде чем проверять человека, следует убедиться в том, что он не был проверен ранее. Для этого мы будем вести список уже проверенных людей.
+
+А вот окончательная версия кода поиска в ширину, в которой учтено это обстоятельство:
+```JavaScript
+class Deque {
+    constructor() {
+        this.front = this.back = undefined;
+    }
+    addFront(value) {
+        if (!this.front) this.front = this.back = { value };
+        else this.front = this.front.next = { value, prev: this.front };
+    }
+    removeFront() {
+        let value = this.peekFront();
+        if (this.front === this.back) this.front = this.back = undefined;
+        else (this.front = this.front.prev).next = undefined;
+        return value;
+    }
+    peekFront() { 
+        return this.front && this.front.value;
+    }
+    addBack(value) {
+        if (!this.front) this.front = this.back = { value };
+        else this.back = this.back.prev = { value, next: this.back };
+    }
+    removeBack() {
+        let value = this.peekBack();
+        if (this.front === this.back) this.front = this.back = undefined;
+        else (this.back = this.back.next).back = undefined;
+        return value;
+    }
+    peekBack() { 
+        return this.back && this.back.value;
+    }
+}
+
+function person_is_seller(name) {
+    return name[1] === "h";
+}
+
+function search(name) {
+    let search_queue = new Deque();
+    search_queue.addFront(graph.get(name));
+    let searched = new Map();
+
+    while (search_queue) {
+        let person = search_queue.removeFront();
+
+        if(!searched.has(person)) {
+            if(person_is_seller(person)) {
+                console.log(person + " is a mango seller!");
+                return true;
+            } else {
+                search_queue.addFront(graph.person);
+                searched.add(person, true);
+            }
+        }
+
+        return false;
+    }
+}
+
+search("you");
+```
+
+### Время выполнения
+Если поиск продавца манго был выполнен по всей сети, значит, вы прошли по каждому ребру (напомню: ребром называется соединительная линия или линия со стрелкой, ведущая от одного человека к другому). Таким образом, время выполнения составляет как минимум О(количество ребер).
+
+Также в программе должна храниться очередь поиска. Добавление одно­го человека в очередь выполняется за постоянное время: О(1). Выпол­нение операции для каждого человека потребует суммарного времени О(количество людей). Поиск в ширину выполняется за время О(количество людей + количество ребер), что обычно записывается в форме O(V+E) ( V - количество вершин, Е - количество ребер).
+
+### Шпаргалка
+* Поиск в ширину позволяет определить, существует ли путь из А в В.
+* Если путь существует, то поиск в ширину находит кратчайший путь.
+* Если в вашей задаче требуется найти «кратчайшее Х», попробуйте смо­делировать свою задачу графом и воспользуйтесь поиском в ширину для ее решения.
+* В направленном графе есть стрелки, а отношения действуют в направле­ нии стрелки (Рама -> Адит означает «Рама должен Адиту»).
+* В ненаправленных графах стрелок нет, а отношение идет в обе стороны (Росс - Рэйчел означает «Росс встречается с Рэйчел, а Рэйчел встреча­ется с Россом».)
+* Очереди относятся к категории FIFO («первым вошел, первым вышел»).
+* Стек относится к категории LIFO («последним пришел, первым вышел»).
+* Людей следует проверять в порядке их добавления в список поиска, поэтому список поиска должен быть оформлен в виде очереди, иначе найденный путь не будет кратчайшим.
+* Позаботьтесь о том, чтобы уже прове­ренный человек не проверялся заново, иначе может возникнуть бесконечный цикл.
