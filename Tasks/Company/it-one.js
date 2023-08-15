@@ -8,16 +8,15 @@ const input = [
 let result = input
     .filter(({expired}) => !expired)
     .sort((a, b) => a.order - b.order)
-    .reduce((accumulator, {value}) => {
+    .reduce((acc, {value}) => {
         for (let i = value.length - 1; i >= 0; i--) {
-            if(isNaN(value[i])) {
-                accumulator.uniqueChars.add(value[i]);
+            if (isNaN(value[i]) && !acc.uniqueChars.has(value[i])) {
+                acc.res += value[i];
+                acc.uniqueChars.add(value[i]);
             }
         }
-
-        accumulator.res = [...accumulator.uniqueChars].join("");
         
-        return accumulator;
+        return acc;
     }, {res: "", uniqueChars: new Set()}).res;
 
 
