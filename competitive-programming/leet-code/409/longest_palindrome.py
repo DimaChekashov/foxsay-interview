@@ -14,3 +14,8 @@ class Solution:
         if odd_count > 1:
             return len(s) - odd_count + 1
         return len(s)
+
+if __name__ == "__main__":
+    solution = Solution()
+    print(solution.longestPalindrome("abccccdd"))
+    print(solution.longestPalindrome("a"))
