@@ -1,21 +1,24 @@
 from typing import List
 
 class Solution:
-    def jump(self, nums: List[int]) -> int:
-        near = far = jumps = 0
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        res = []
+        comb = []
 
-        while far < len(nums) - 1:
-            farthest = 0
-            for i in range(near, far + 1):
-                farthest = max(farthest, i + nums[i])
+        def backtrack(start):
+            if len(comb) == k:
+                res.append(comb[:])
+                return
             
-            near = far + 1
-            far = farthest
-            jumps += 1
-        
-        return jumps
+            for num in range(start, n + 1):
+                comb.append(num)
+                backtrack(num + 1)
+                comb.pop()
+
+        backtrack(1)
+        return res
 
 if __name__ == "__main__":
     solution = Solution()
-    print(solution.jump([2,3,1,1,4]))
-    print(solution.jump([2,3,0,1,4]))
+    print(solution.combine(4, 2))
+    print(solution.combine(1, 1))
