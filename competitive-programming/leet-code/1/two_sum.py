@@ -2,17 +2,15 @@ from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        numMap = {}
-        n = len(nums)
+        valuesMap = {}
 
-        for i in range(n):
-            numMap[nums[i]] = i
+        for i in range(len(nums)):
+            pair_key = target - nums[i]
+            if pair_key in valuesMap and valuesMap[pair_key] != i:
+                return [i, valuesMap[pair_key]]
+            else:
+                valuesMap[nums[i]] = i
 
-        for i in range(n):
-            complement = target - nums[i]
-            if complement in numMap and numMap[complement] != i:
-                return [i, numMap[complement]]
-        
         return []
 
 if __name__ == "__main__":
