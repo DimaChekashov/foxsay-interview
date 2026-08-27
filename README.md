@@ -1,2 +1,2 @@
-# Front-end Interview
+# Front-end Interview and Algorithms tasks
 
