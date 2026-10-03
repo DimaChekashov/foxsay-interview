@@ -8,7 +8,9 @@ var isMatch = function (s, p) {
     if (p[j - 1] === "*") {
       dp[0][j] = dp[0][j - 2];
     }
+    
   }
+
 
   for (let i = 1; i <= m; i++) {
     for (let j = 1; j <= n; j++) {
